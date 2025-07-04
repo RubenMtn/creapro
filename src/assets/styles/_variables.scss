@@ -1,0 +1,73 @@
+// =====================================================
+// VARIABLES GLOBALES SCSS
+// =====================================================
+
+// Breakpoints para responsive design
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1025px;
+
+// Colores principales
+$color-primary: #000000;
+$color-secondary: #ffffff;
+$color-accent: #007bff;
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-danger: #dc3545;
+$color-info: #17a2b8;
+
+// Colores de texto
+$text-primary: #ffffff;
+$text-secondary: #cccccc;
+$text-dark: #333333;
+$text-light: #999999;
+
+// Colores de fondo
+$bg-primary: #000000;
+$bg-secondary: #1a1a1a;
+$bg-light: #f8f9fa;
+$bg-dark: #343a40;
+
+// Tipografía
+$font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-secondary: 'Arial', sans-serif;
+$font-family-mono: 'Courier New', monospace;
+
+// Tamaños de fuente
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-md: 1rem;       // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-xxl: 1.5rem;    // 24px
+$font-size-xxxl: 2rem;     // 32px
+
+// Espaciado
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-xxl: 3rem;     // 48px
+
+// Bordes
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 1rem;
+$border-width: 1px;
+
+// Sombras
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-modal: 1050;
+$z-index-tooltip: 1070;
+$z-index-popover: 1080;
+
+// Transiciones
+$transition-fast: 0.15s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;

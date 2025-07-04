@@ -1,0 +1,14 @@
+# Logo Placeholder
+
+Coloca aquí el logo de tu aplicación en formato SVG para obtener la mejor calidad en todas las resoluciones.
+
+## Formatos recomendados:
+- **SVG** (vectorial) - Ideal para logos
+- **PNG** (con transparencia) - Alternativa si no tienes SVG
+
+## Tamaños recomendados:
+- Altura: 40px (móvil) / 50px (desktop)
+- Formato cuadrado o rectangular horizontal
+
+Para añadir tu logo, simplemente reemplaza este archivo con:
+`logo.svg` o `logo.png`

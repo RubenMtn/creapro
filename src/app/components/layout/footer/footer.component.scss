@@ -1,0 +1,121 @@
+// Importar variables y mixins con la nueva sintaxis @use
+@use '../../../../assets/styles/variables' as *;
+@use '../../../../assets/styles/mixins' as *;
+
+// =====================================================
+// FOOTER COMPONENT - Pie de página compacto
+// =====================================================
+
+.footer {
+  // Variables locales
+  $footer-bg: $bg-primary; // Fondo negro
+  $footer-border: rgba(255, 255, 255, 0.1);
+  $footer-text: $text-secondary;
+  
+  // Estructura base
+  background: $footer-bg;
+  border-top: 1px solid $footer-border;
+  padding: $spacing-sm 0;
+  
+  @include mobile {
+    padding: 8px 0;
+  }
+  
+  // Contenido principal
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  // Enlaces de navegación en 2 columnas
+  &__links {
+    width: 100%;
+    max-width: 400px; // Limitar ancho para mejor apariencia
+  }
+  
+  &__nav-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // 2 columnas iguales
+    gap: $spacing-xs $spacing-md;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; // Centrar el grid completo
+    
+    @include mobile {
+      gap: $spacing-xs $spacing-sm;
+    }
+  }
+  
+  &__nav-item {
+    margin: 0;
+    text-align: center; // Centrar contenido de cada item
+  }
+  
+  &__nav-link {
+    color: $footer-text;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    transition: $transition-fast;
+    display: block;
+    padding: $spacing-xs 0;
+    text-align: center; // Centrar texto del enlace
+    
+    @include mobile {
+      font-size: $font-size-xs;
+    }
+    
+    &:hover {
+      color: $text-primary;
+      transform: translateX(3px);
+    }
+    
+    &--external::after {
+      content: ' ↗';
+      font-size: 0.8em;
+      opacity: 0.7;
+    }
+    
+    &.active {
+      color: $color-accent;
+      font-weight: 500;
+    }
+  }
+  
+  // Línea divisoria
+  &__divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      $footer-border,
+      transparent
+    );
+    margin: $spacing-sm 0;
+    
+    @include mobile {
+      margin: 4px 0;
+    }
+  }
+  
+  // Copyright
+  &__bottom {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  &__copyright {
+    color: $footer-text;
+    font-size: $font-size-xs;
+    margin: 0;
+    padding: 0;
+    opacity: 0.8;
+    line-height: 1.2;
+    
+    @include mobile {
+      font-size: 11px;
+      line-height: 1.1;
+    }
+  }
+}

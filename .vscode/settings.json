@@ -1,0 +1,25 @@
+{
+  // Configuración del explorador de archivos
+  "explorer.compactFolders": false,
+  "explorer.autoReveal": true,
+  "explorer.expandSingleFolderWorkspaces": true,
+  
+  // Mostrar estructura expandida
+  "workbench.tree.indent": 20,
+  "workbench.tree.renderIndentGuides": "always",
+  
+  // Configuración adicional para mejor visualización
+  "explorer.decorations.colors": true,
+  "explorer.decorations.badges": true,
+  
+  // Configuración adicional para forzar estructura expandida
+  "explorer.sortOrder": "type",
+  "files.associations": {
+    "*.scss": "scss"
+  },
+  
+  // Configuración del editor
+  "editor.minimap.enabled": true,
+  "editor.folding": true,
+  "editor.foldingStrategy": "indentation"
+}

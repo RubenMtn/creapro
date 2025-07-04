@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+/* =====================================================
+   ESTILOS GLOBALES DE LA APLICACIÓN
+   ===================================================== */
+
+// Importar variables y mixins con la nueva sintaxis @use
+@use 'assets/styles/variables' as *;
+@use 'assets/styles/mixins' as *;
+
+/* Reset y configuración global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Configuración base */
+html {
+  font-size: 16px; // Base para rem
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  line-height: 1.6;
+  color: $text-primary;
+  background-color: $bg-primary;
+  overflow-x: hidden;
+  margin: 0; // Sin margen
+  padding: 0; // Sin padding
+  min-height: 100vh; // Altura completa de la ventana
+}
+
+/* Variables globales para breakpoints */
+:root {
+  /* Breakpoints */
+  --mobile-max: 768px;
+  --tablet-min: 769px;
+  --tablet-max: 1024px;
+  --desktop-min: 1025px;
+  
+  /* Colores */
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #ffffff;
+}
+
+/* Mixins para media queries */
+@mixin mobile {
+  @media (max-width: #{var(--mobile-max)}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{var(--tablet-min)}) and (max-width: #{var(--tablet-max)}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{var(--desktop-min)}) {
+    @content;
+  }
+}

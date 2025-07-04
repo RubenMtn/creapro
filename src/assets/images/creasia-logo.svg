@@ -1,0 +1,22 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo del logo -->
+  <rect width="200" height="60" fill="#000000" stroke="#ffffff" stroke-width="2" rx="8"/>
+  
+  <!-- Texto CREASIA -->
+  <text x="100" y="35" 
+        font-family="Arial, sans-serif" 
+        font-size="24" 
+        font-weight="bold" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        dominant-baseline="middle">
+    CREASIA
+  </text>
+  
+  <!-- Decoración - línea inferior -->
+  <rect x="20" y="45" width="160" height="2" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Decoración - puntos -->
+  <circle cx="30" cy="15" r="2" fill="#ffffff" opacity="0.5"/>
+  <circle cx="170" cy="15" r="2" fill="#ffffff" opacity="0.5"/>
+</svg>

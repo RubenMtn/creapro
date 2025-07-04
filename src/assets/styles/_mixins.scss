@@ -1,0 +1,90 @@
+// =====================================================
+// MIXINS SCSS
+// =====================================================
+
+// Importar variables necesarias para los mixins
+@use 'variables' as *;
+
+// Mixin para breakpoints responsive
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+// Mixin para tablet y desktop juntos
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+// Mixin para mobile y tablet juntos
+@mixin mobile-tablet {
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+// Mixin para centrar elementos
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin para texto truncado
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Mixin para transiciones
+@mixin transition($property: all, $duration: $transition-normal, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+// Mixin para sombras de botones
+@mixin button-shadow($shadow: $shadow-md) {
+  box-shadow: $shadow;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+  
+  &:active {
+    box-shadow: $shadow-sm;
+  }
+}
+
+// Mixin para aspectos ratio
+@mixin aspect-ratio($width: 16, $height: 9) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: percentage($height / $width);
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

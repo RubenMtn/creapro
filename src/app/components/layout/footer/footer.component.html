@@ -1,0 +1,45 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      
+      <!-- Enlaces de navegación en 2 columnas -->
+      <div class="footer__links">
+        <nav class="footer__nav">
+          <ul class="footer__nav-list">
+            <li 
+              *ngFor="let link of footerLinks" 
+              class="footer__nav-item">
+              <a 
+                *ngIf="!link.external"
+                [routerLink]="link.route"
+                routerLinkActive="active"
+                class="footer__nav-link">
+                {{ link.label }}
+              </a>
+              <a 
+                *ngIf="link.external"
+                [href]="link.route"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer__nav-link footer__nav-link--external">
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      
+    </div>
+    
+    <!-- Línea divisoria -->
+    <div class="footer__divider"></div>
+    
+    <!-- Copyright -->
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © {{ currentYear }}. Todos los derechos reservados.
+      </p>
+    </div>
+    
+  </div>
+</footer>

@@ -1,0 +1,79 @@
+// Importar variables y mixins con la nueva sintaxis @use
+@use '../../../../assets/styles/variables' as *;
+@use '../../../../assets/styles/mixins' as *;
+
+.header {
+  // Variables locales del componente
+  $header-height-mobile: 70px;
+  $header-height-tablet: 80px;
+  $header-height-desktop: 90px;
+  
+  // Estructura base
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  
+  // Altura responsive
+  height: $header-height-mobile;
+  
+  @include tablet {
+    height: $header-height-tablet;
+  }
+  
+  @include desktop {
+    height: $header-height-desktop;
+  }
+  
+  // Contenedor del header
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm 0;
+    outline: none; // Sin outline en el contenedor
+    user-select: none; // No seleccionable
+  }
+  
+  // Logo limpio sin efectos
+  &__logo {
+    height: 50px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    cursor: default; // Sin cursor de puntero
+    user-select: none; // No seleccionable
+    pointer-events: none; // No interactivo
+    -webkit-user-select: none; // Safari
+    -moz-user-select: none; // Firefox
+    -ms-user-select: none; // IE/Edge
+    -webkit-touch-callout: none; // iOS Safari
+    -webkit-tap-highlight-color: transparent; // Android/iOS
+    outline: none; // Sin outline al hacer foco
+    border: none; // Sin borde
+    
+    // Prevenir arrastrar la imagen
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    
+    @include mobile {
+      height: 40px;
+      max-width: 150px;
+    }
+    
+    @include tablet {
+      height: 55px;
+      max-width: 220px;
+    }
+    
+    @include desktop {
+      height: 60px;
+      max-width: 250px;
+    }
+  }
+}

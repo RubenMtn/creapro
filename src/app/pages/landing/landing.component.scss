@@ -1,0 +1,66 @@
+// Importar variables y mixins con la nueva sintaxis @use
+@use '../../../assets/styles/variables' as *;
+@use '../../../assets/styles/mixins' as *;
+
+// =====================================================
+// LANDING COMPONENT - Video escapando de contenedores
+// =====================================================
+
+.landing {
+  // Espacios reducidos para landing más compacto
+  @include mobile {
+    margin-top: 35px; // Mitad de la altura header
+    margin-bottom: 40px; // Más espacio para empujar el footer abajo
+    height: 100px; // Altura del video
+  }
+  
+  @include tablet {
+    margin-top: 40px; // Mitad de la altura header
+    margin-bottom: 50px; // Más espacio para empujar el footer abajo
+    height: 200px; // Altura del video
+  }
+  
+  @include desktop {
+    margin-top: 45px; // Mitad de la altura header
+    margin-bottom: 60px; // Más espacio para empujar el footer abajo
+    height: 250px; // Altura del video
+  }
+}
+
+// Video principal - tamaño intermedio, grande pero controlado
+.main-video {
+  position: fixed; // Fixed para estar completamente libre
+  left: 0;
+  width: 100vw; // 100% del ancho de la ventana
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  background: $bg-secondary;
+  z-index: 1; // Por encima del contenido normal
+  
+  // Tamaño intermedio - más grande que antes pero no toda la pantalla
+  @include mobile {
+    top: 30px; // Debajo del header
+    height: 44vh; // 50% de la altura de la ventana
+  }
+  
+  @include tablet {
+    top: 80px; // Debajo del header tablet
+    height: 55vh; // 55% de la altura de la ventana
+  }
+  
+  @include desktop {
+    top: 90px; // Debajo del header desktop
+    height: 60vh; // 60% de la altura de la ventana
+  }
+  
+  // Ocultar controles
+  &::-webkit-media-controls-panel,
+  &::-webkit-media-controls-play-button,
+  &::-webkit-media-controls-start-playback-button,
+  &::-webkit-media-controls,
+  &::-moz-media-controls {
+    display: none !important;
+  }
+}
