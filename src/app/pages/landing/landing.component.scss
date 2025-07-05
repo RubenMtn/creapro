@@ -30,29 +30,30 @@
 // Video principal - tamaño intermedio, grande pero controlado
 .main-video {
   position: fixed; // Fixed para estar completamente libre
-  left: 0;
-  width: 100vw; // 100% del ancho de la ventana
+  left: -5%; // Extender más allá del borde izquierdo
+  width: 110vw; // 110% del ancho de la ventana para que sobresalga
   display: block;
   margin: 0;
   padding: 0;
   object-fit: cover;
   background: $bg-secondary;
   z-index: 1; // Por encima del contenido normal
+  transition: opacity 1.2s ease-out; // Transición fade out 1.2 segundos (más suave)
   
   // Tamaño intermedio - más grande que antes pero no toda la pantalla
   @include mobile {
-    top: 30px; // Debajo del header
-    height: 44vh; // 50% de la altura de la ventana
+    top: 50px; // Debajo del header
+    height: 50vh; // 50% de la altura de la ventana
   }
   
   @include tablet {
     top: 80px; // Debajo del header tablet
-    height: 55vh; // 55% de la altura de la ventana
+    height: 60vh; // 60% de la altura de la ventana
   }
   
   @include desktop {
     top: 90px; // Debajo del header desktop
-    height: 60vh; // 60% de la altura de la ventana
+    height: 65vh; // 65% de la altura de la ventana
   }
   
   // Ocultar controles
@@ -64,3 +65,356 @@
     display: none !important;
   }
 }
+
+// Imagen que reemplaza al video - ESCALADA correctamente y ancho completo
+.main-image {
+  position: fixed; // Fixed para estar completamente libre
+  left: -5%; // Misma posición que el video (ancho completo)
+  width: 110vw; // Mismo ancho que el video (TODO el ancho de pantalla)
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover; // CAMBIO: cover para llenar todo el ancho
+  object-position: center; // Centra la imagen dentro del contenedor
+  background: $bg-secondary;
+  z-index: 1; // Por encima del contenido normal
+  opacity: 0; // IMPORTANTE: Inicialmente invisible
+  transition: opacity 1.3s ease-in-out; // Transición fade in 1.3 segundos (más lento)
+  transform-origin: center; // Punto de origen para escalar
+  
+  // Cuando se añade la clase fade-in, aparece gradualmente
+  &.fade-in {
+    opacity: 1;
+  }
+  
+  // Mismo tamaño que el video pero MÁS PEQUEÑA (escalado reducido) - AUMENTADO 10%
+  @include mobile {
+    top: 50px; // Misma posición que el video
+    height: 50vh; // Misma altura que el video
+    transform: scale(0.44); // Escalar al 44% (10% más grande)
+  }
+  
+  @include tablet {
+    top: 80px; // Misma posición que el video
+    height: 60vh; // Misma altura que el video
+    transform: scale(0.83); // Escalar al 83% (10% más grande)
+  }
+  
+  @include desktop {
+    top: 90px; // Misma posición que el video
+    height: 65vh; // Misma altura que el video
+    transform: scale(0.88); // Escalar al 88% (10% más grande)
+  }
+}
+
+// Puntos de referencia sobre la imagen
+.reference-points {
+  position: fixed; // Fixed para seguir la misma posición que la imagen
+  left: -5%; // Misma posición que la imagen
+  width: 110vw; // Mismo ancho que la imagen
+  display: block;
+  margin: 0;
+  padding: 0;
+  z-index: 2; // Por encima de la imagen
+  pointer-events: none; // No interceptar eventos del mouse
+  opacity: 0; // Inicialmente invisible
+  transition: opacity 1.5s ease-in-out; // Transición fade in 1.5 segundos (más lento que la imagen)
+  
+  // Cuando se añade la clase fade-in, aparece gradualmente
+  &.fade-in {
+    opacity: 1;
+  }
+  
+  // Mismo tamaño y posición que la imagen por breakpoint - ACTUALIZADO PARA COINCIDIR
+  @include mobile {
+    top: 50px; // Misma posición que la imagen
+    height: 50vh; // Misma altura que la imagen
+    transform: scale(0.44); // Mismo escalado que la imagen (actualizado)
+  }
+  
+  @include tablet {
+    top: 80px; // Misma posición que la imagen
+    height: 60vh; // Misma altura que la imagen
+    transform: scale(0.83); // Mismo escalado que la imagen (actualizado)
+  }
+  
+  @include desktop {
+    top: 90px; // Misma posición que la imagen
+    height: 65vh; // Misma altura que la imagen
+    transform: scale(0.88); // Mismo escalado que la imagen (actualizado)
+  }
+}
+
+// Estilo base para cada punto de referencia
+.reference-point {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: auto; // Permitir hover en los puntos
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.3);
+    background: rgba(255, 255, 0, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  // Punto superior izquierdo (original)
+  &--top-left {
+    left: 35%; // 35% desde la izquierda
+    top: 30%; // 30% desde arriba
+  }
+  
+  // Punto superior derecho (original)
+  &--top-right {
+    left: 65%; // 65% desde la izquierda
+    top: 30%; // 30% desde arriba
+  }
+  
+  // Punto medio izquierdo
+  &--middle-left {
+    left: 35%; // 35% desde la izquierda
+    top: 50%; // 50% desde arriba
+  }
+  
+  // Punto medio derecho
+  &--middle-right {
+    left: 65%; // 65% desde la izquierda
+    top: 50%; // 50% desde arriba
+  }
+  
+  // Punto inferior izquierdo
+  &--bottom-left {
+    left: 35%; // 35% desde la izquierda
+    top: 70%; // 70% desde arriba
+  }
+  
+  // Punto inferior derecho
+  &--bottom-right {
+    left: 65%; // 65% desde la izquierda
+    top: 70%; // 70% desde arriba
+  }
+}
+
+// Animaciones de transición
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease-out !important; // Fade out 1.2 segundos (más suave)
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transition: opacity 1.1s ease-in-out !important; // Fade in 1.3 segundos (más lento)
+}
+
+// Contenedor de líneas y cuadros de texto
+.info-lines-container {
+  position: fixed; // Fixed para seguir la misma posición que la imagen
+  left: -5%; // Misma posición que la imagen
+  width: 110vw; // Mismo ancho que la imagen
+  display: block;
+  margin: 0;
+  padding: 0;
+  z-index: 3; // Por encima de los puntos
+  pointer-events: none; // No interceptar eventos del mouse
+  opacity: 0; // Inicialmente invisible
+  transition: opacity 1.8s ease-in-out; // Transición fade in 1.8 segundos (más lento)
+  
+  // Cuando se añade la clase fade-in, aparece gradualmente
+  &.fade-in {
+    opacity: 1;
+  }
+  
+  // Mismo tamaño y posición que la imagen por breakpoint - ACTUALIZADO PARA COINCIDIR
+  @include mobile {
+    top: 50px; // Misma posición que la imagen
+    height: 50vh; // Misma altura que la imagen
+    transform: scale(0.44); // Mismo escalado que la imagen (actualizado)
+  }
+  
+  @include tablet {
+    top: 80px; // Misma posición que la imagen
+    height: 60vh; // Misma altura que la imagen
+    transform: scale(0.83); // Mismo escalado que la imagen (actualizado)
+  }
+  
+  @include desktop {
+    top: 90px; // Misma posición que la imagen
+    height: 65vh; // Misma altura que la imagen
+    transform: scale(0.88); // Mismo escalado que la imagen (actualizado)
+  }
+}
+
+// Líneas individuales
+.info-line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  // Línea con path (trazado) - PRIMERA PARTE (inclinada)
+  &__path {
+    position: absolute;
+    height: 4px; // Más gruesa
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    transform-origin: left center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+  }
+  
+  // Segunda parte de la línea (horizontal)
+  &__path-horizontal {
+    position: absolute;
+    height: 4px; // Misma altura
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9));
+    transform-origin: left center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+  }
+  
+  // Líneas del lado izquierdo - PARTEN DESDE LOS PUNTOS (35%) HACIA LA IZQUIERDA
+  &--left-1 {
+    .info-line__path {
+      left: 35%; // Empieza EXACTAMENTE donde está el punto
+      top: 30%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la izquierda
+      transform: rotate(180deg) rotate(20deg); // Rotar 180° para ir hacia la izquierda + inclinación
+    }
+    .info-line__path-horizontal {
+      left: 5%; // Termina en el extremo izquierdo donde están los cuadros
+      top: 26%; // Alineado para continuidad
+      width: 15%; // Conecta desde el extremo hasta donde termina la primera línea
+      transform: rotate(0deg);
+    }
+  }
+  
+  &--left-2 {
+    .info-line__path {
+      left: 35%; // Empieza EXACTAMENTE donde está el punto
+      top: 50%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la izquierda
+      transform: rotate(180deg) rotate(10deg); // Rotar 180° para ir hacia la izquierda + inclinación suave
+    }
+    .info-line__path-horizontal {
+      left: 5%; // Termina en el extremo izquierdo donde están los cuadros
+      top: 49%; // Alineado para continuidad
+      width: 15%; // Conecta desde el extremo hasta donde termina la primera línea
+      transform: rotate(0deg);
+    }
+  }
+  
+  &--left-3 {
+    .info-line__path {
+      left: 35%; // Empieza EXACTAMENTE donde está el punto
+      top: 70%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la izquierda
+      transform: rotate(180deg) rotate(-20deg); // Rotar 180° para ir hacia la izquierda + inclinación hacia arriba
+    }
+    .info-line__path-horizontal {
+      left: 5%; // Termina en el extremo izquierdo donde están los cuadros
+      top: 73%; // Alineado para continuidad
+      width: 15%; // Conecta desde el extremo hasta donde termina la primera línea
+      transform: rotate(0deg);
+    }
+  }
+  
+  // Líneas del lado derecho - PARTEN DESDE LOS PUNTOS (65%) HACIA LA DERECHA
+  &--right-1 {
+    .info-line__path {
+      left: 65%; // Empieza EXACTAMENTE donde está el punto
+      top: 30%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la derecha
+      transform: rotate(20deg); // Inclinación hacia abajo-derecha
+    }
+    .info-line__path-horizontal {
+      left: 77%; // Conecta donde termina la primera línea
+      top: 34%; // Ajustado para continuidad visual
+      width: 15%; // Línea horizontal hasta el extremo derecho
+      transform: rotate(0deg);
+    }
+  }
+  
+  &--right-2 {
+    .info-line__path {
+      left: 65%; // Empieza EXACTAMENTE donde está el punto
+      top: 50%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la derecha
+      transform: rotate(10deg); // Inclinación suave hacia abajo-derecha
+    }
+    .info-line__path-horizontal {
+      left: 77%; // Conecta donde termina la primera línea
+      top: 52%; // Ajustado para continuidad
+      width: 15%; // Línea horizontal hasta el extremo derecho
+      transform: rotate(0deg);
+    }
+  }
+  
+  &--right-3 {
+    .info-line__path {
+      left: 65%; // Empieza EXACTAMENTE donde está el punto
+      top: 70%; // Misma altura que el punto
+      width: 15%; // Primera parte inclinada hacia la derecha
+      transform: rotate(-20deg); // Inclinación hacia arriba-derecha
+    }
+    .info-line__path-horizontal {
+      left: 77%; // Conecta donde termina la primera línea
+      top: 66%; // Ajustado para continuidad visual
+      width: 15%; // Línea horizontal hasta el extremo derecho
+      transform: rotate(0deg);
+    }
+  }
+}
+
+// Cuadros de texto
+.info-box {
+  position: absolute;
+  padding: 40px 60px; // Cuadriplicado (de 10px 15px)
+  background: rgba(0, 0, 0, 0.85);
+  border: 8px solid rgba(255, 255, 255, 0.4); // Cuadriplicado grosor
+  border-radius: 32px; // Cuadriplicado
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5); // Cuadriplicado
+  pointer-events: auto; // Permitir interacción
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(0, 0, 0, 0.95);
+    transform: scale(1.08);
+    box-shadow: 0 32px 100px rgba(0, 0, 0, 0.7); // Cuadriplicado
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  // Cuadros del lado izquierdo - más a la izquierda
+  &--left {
+    left: 5%; // Más a la izquierda
+  }
+  
+  // Cuadros del lado derecho - más a la derecha
+  &--right {
+    right: 5%; // Más a la derecha
+  }
+  
+  // Texto del cuadro
+  &__text {
+    color: white;
+    font-size: 60px; // Cuadriplicado (de 15px)
+    font-weight: 600;
+    white-space: nowrap;
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); // Cuadriplicado
+    letter-spacing: 2px; // Cuadriplicado
+  }
+}
+
+// Posicionamiento específico de cada cuadro - ALINEADOS CON LAS LÍNEAS HORIZONTALES
+.info-line--left-1 .info-box { top: 25%; } // Alineado con línea horizontal superior izquierda
+.info-line--left-2 .info-box { top: 48%; } // Alineado con línea horizontal media izquierda
+.info-line--left-3 .info-box { top: 72%; } // Alineado con línea horizontal inferior izquierda
+
+.info-line--right-1 .info-box { top: 33%; } // Alineado con línea horizontal superior derecha
+.info-line--right-2 .info-box { top: 51%; } // Alineado con línea horizontal media derecha
+.info-line--right-3 .info-box { top: 65%; } // Alineado con línea horizontal inferior derecha

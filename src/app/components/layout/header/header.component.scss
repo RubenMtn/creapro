@@ -55,6 +55,14 @@
     outline: none; // Sin outline al hacer foco
     border: none; // Sin borde
     
+    // Fade in al cargar la página
+    opacity: 0; // Inicialmente invisible
+    transition: opacity 0.7s ease-in-out; // Transición fade in 0.7 segundos
+    
+    &.fade-in {
+      opacity: 1; // Visible cuando se añade la clase
+    }
+    
     // Prevenir arrastrar la imagen
     -webkit-user-drag: none;
     -khtml-user-drag: none;

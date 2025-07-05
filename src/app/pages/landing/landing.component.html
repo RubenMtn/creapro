@@ -1,7 +1,9 @@
 <div class="landing">
   <!-- Video principal que ocupa TODO el ancho -->
   <video 
+    #mainVideo
     class="main-video"
+    [class.fade-out]="!showVideo"
     autoplay
     muted
     playsinline
@@ -10,4 +12,79 @@
     <source src="assets/videos/facesini.mp4" type="video/mp4">
     Tu navegador no soporta la reproducción de video.
   </video>
+  
+  <!-- Imagen que aparece cuando el video termina -->
+  <img 
+    class="main-image"
+    *ngIf="showImage"
+    src="assets/images/facedrewz.jpg"
+    alt="Facedrewz - Imagen final">
+  
+  <!-- Puntos de referencia sobre la imagen -->
+  <div class="reference-points" *ngIf="showImage">
+    <!-- Fila superior (puntos originales) -->
+    <div class="reference-point reference-point--top-left" title="Punto superior izquierdo"></div>
+    <div class="reference-point reference-point--top-right" title="Punto superior derecho"></div>
+    
+    <!-- Fila media -->
+    <div class="reference-point reference-point--middle-left" title="Punto medio izquierdo"></div>
+    <div class="reference-point reference-point--middle-right" title="Punto medio derecho"></div>
+    
+    <!-- Fila inferior -->
+    <div class="reference-point reference-point--bottom-left" title="Punto inferior izquierdo"></div>
+    <div class="reference-point reference-point--bottom-right" title="Punto inferior derecho"></div>
+  </div>
+  
+  <!-- Líneas y cuadros de texto -->
+  <div class="info-lines-container" *ngIf="showImage">
+    <!-- Líneas del lado izquierdo -->
+    <div class="info-line info-line--left-1">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--left">
+        <span class="info-box__text">Hola1</span>
+      </div>
+    </div>
+    
+    <div class="info-line info-line--left-2">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--left">
+        <span class="info-box__text">Hola2</span>
+      </div>
+    </div>
+    
+    <div class="info-line info-line--left-3">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--left">
+        <span class="info-box__text">Hola3</span>
+      </div>
+    </div>
+    
+    <!-- Líneas del lado derecho -->
+    <div class="info-line info-line--right-1">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--right">
+        <span class="info-box__text">Hola4</span>
+      </div>
+    </div>
+    
+    <div class="info-line info-line--right-2">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--right">
+        <span class="info-box__text">Hola5</span>
+      </div>
+    </div>
+    
+    <div class="info-line info-line--right-3">
+      <div class="info-line__path"></div>
+      <div class="info-line__path-horizontal"></div>
+      <div class="info-box info-box--right">
+        <span class="info-box__text">Hola6</span>
+      </div>
+    </div>
+  </div>
 </div>
